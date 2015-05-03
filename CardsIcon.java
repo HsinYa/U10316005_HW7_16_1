@@ -11,6 +11,7 @@ public class CardsIcon extends JFrame{
 	JLabel[] lab = new JLabel[4];
 	JPanel p2;
 	JButton refresh = new JButton("Refresh");
+	JPanel p3;
 	
 	//Constructor
 	public CardsIcon(){
@@ -38,6 +39,12 @@ public class CardsIcon extends JFrame{
 		p2.add(refresh,new FlowLayout(FlowLayout.CENTER));
 		//Register listener
 		refresh.addActionListener(new ButtonListener());
+		//Create a panel3 to put panel1 and panel2
+		p3 = new JPanel(new BorderLayout());
+		p3.add(p1,BorderLayout.NORTH);
+		p3.add(p2,BorderLayout.SOUTH);
+		//Let panel3 put into the frame
+		add(p3,BorderLayout.CENTER);
 	}
 	//Handle the refresh button
 	private class ButtonListener implements ActionListener{
