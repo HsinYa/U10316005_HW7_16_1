@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 public class CardsIcon extends JFrame{
 	//Data field
 	private ImageIcon[] cards = new ImageIcon[52];
-	
-	
+	JPanel p1;
+	JLabel[] lab = new JLabel[4];
 	
 	//Constructor
 	public CardsIcon(){
@@ -24,7 +24,13 @@ public class CardsIcon extends JFrame{
 			cards[i] = cards[index];
 			cards[index] = temp;
 		}
-	
+		//Create a panel1 to put four cards
+		p1 = new JPanel();
+		p1.setLayout(new GridLayout(1,4));
+		for(int n = 0; n < 4; n++){
+			lab[n] = new JLabel(cards[n]);
+			p1.add(lab[n]);
+		}
 	}
 
 	//Main method
