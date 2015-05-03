@@ -17,7 +17,7 @@ public class CardsIcon extends JFrame{
 	public CardsIcon(){
 		//Get the images from the resource
 		for(int k = 0; k < 52; k++){
-			cards[k] = new ImageIcon("card/"+(k+1)+".png");
+			cards[k] = new ImageIcon(getClass().getResource("card/"+(k+1)+".png"));
 		}
 		//Shuffle the cards
 		for(int i = 0; i<cards.length; i++){
