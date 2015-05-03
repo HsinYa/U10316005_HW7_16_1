@@ -9,6 +9,8 @@ public class CardsIcon extends JFrame{
 	private ImageIcon[] cards = new ImageIcon[52];
 	JPanel p1;
 	JLabel[] lab = new JLabel[4];
+	JPanel p2;
+	JButton refresh = new JButton("Refresh");
 	
 	//Constructor
 	public CardsIcon(){
@@ -31,8 +33,33 @@ public class CardsIcon extends JFrame{
 			lab[n] = new JLabel(cards[n]);
 			p1.add(lab[n]);
 		}
+		//Create a panel2 to put a button
+		p2 = new JPanel();
+		p2.add(refresh,new FlowLayout(FlowLayout.CENTER));
+		//Register listener
+		refresh.addActionListener(new ButtonListener());
 	}
-
+	//Handle the refresh button
+	private class ButtonListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource() == refresh){
+				for(int i = 0; i<cards.length; i++){
+					//Generate an index randomly
+					int index = (int)(Math.random()*cards.length);
+					ImageIcon temp = cards[i];
+					cards[i] = cards[index];
+					cards[index] = temp;
+				}
+				//Display the new four cards 
+				for(int n = 0; n < 4; n++){
+					lab[n].setIcon(cards[n]);
+				}
+				
+			}
+		}
+	}
+	
 	//Main method
 	public static void main(String args[]){
 		CardsIcon frame = new CardsIcon();
